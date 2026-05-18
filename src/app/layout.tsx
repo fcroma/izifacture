@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Izifacture — Facturation pour entrepreneurs africains",
   description: "Créez, envoyez et suivez vos factures automatiquement.",
