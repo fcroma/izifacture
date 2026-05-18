@@ -8,7 +8,7 @@ interface PaymentDonutProps {
   overdue: number;
 }
 
-const CustomTooltip = ({ active, payload }: any) => {
+const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: { name: string; value: number }[] }) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-white border border-slate-100 rounded-xl shadow-card-md px-3 py-2 text-xs">

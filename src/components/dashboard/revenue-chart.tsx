@@ -1,7 +1,7 @@
 "use client";
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Line, ComposedChart, Area,
+  Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, Line, ComposedChart,
 } from "recharts";
 
 const data = [
@@ -19,12 +19,13 @@ function formatK(v: number): string {
   return String(v);
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+interface TooltipEntry { dataKey: string; name: string; value: number; color: string; }
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipEntry[]; label?: string }) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-white border border-slate-100 rounded-xl shadow-card-md px-3 py-2.5 text-xs">
       <p className="font-semibold text-slate-700 mb-1.5">{label}</p>
-      {payload.map((p: any) => (
+      {payload.map((p: TooltipEntry) => (
         <div key={p.dataKey} className="flex items-center gap-2 mb-0.5">
           <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: p.color }} />
           <span className="text-slate-500">{p.name}:</span>

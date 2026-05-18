@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard, Receipt, Users2, Settings2,
   HelpCircle, X, Zap, ChevronLeft, ChevronRight,
-  ChevronsUpDown, Sparkles, LogOut,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/lib/supabase";

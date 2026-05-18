@@ -1,4 +1,4 @@
-import { Client, Invoice, InvoiceItem } from "@/types";
+import { Client, Invoice } from "@/types";
 
 export const mockClients: Client[] = [
   {

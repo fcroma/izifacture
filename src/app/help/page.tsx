@@ -6,7 +6,6 @@ import {
   ChevronDown, Zap, Receipt, Users2, Settings2, Phone, X, Send,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/lib/supabase";
 
