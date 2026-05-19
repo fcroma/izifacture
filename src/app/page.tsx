@@ -363,6 +363,11 @@ function ProbSection() {
 /* ── SECTION: Fonctionnalités ───────────────────────────────────────────── */
 function FeaturesSection() {
   const head = useFadeIn(0);
+  const fa0 = useFadeIn(0);
+  const fa1 = useFadeIn(100);
+  const fa2 = useFadeIn(200);
+  const fa3 = useFadeIn(300);
+  const featureAnims = [fa0, fa1, fa2, fa3];
 
   const features = [
     {
@@ -403,20 +408,17 @@ function FeaturesSection() {
         </p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {features.map((f, i) => {
-          const a = useFadeIn(i * 100);
-          return (
-            <div key={i} {...a} className="card-up bg-white rounded-3xl border border-slate-100 p-7 flex flex-col gap-4">
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center text-2xl shadow-md`}>
-                {f.icon}
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
-              </div>
+        {features.map((f, i) => (
+          <div key={i} {...featureAnims[i]} className="card-up bg-white rounded-3xl border border-slate-100 p-7 flex flex-col gap-4">
+            <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center text-2xl shadow-md`}>
+              {f.icon}
             </div>
-          );
-        })}
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">{f.title}</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -425,6 +427,10 @@ function FeaturesSection() {
 /* ── SECTION: Comment ça marche ─────────────────────────────────────────── */
 function HowSection() {
   const head = useFadeIn(0);
+  const ha0 = useFadeIn(0);
+  const ha1 = useFadeIn(130);
+  const ha2 = useFadeIn(260);
+  const stepAnims = [ha0, ha1, ha2];
 
   const steps = [
     { n: "01", icon: "✍️", title: "Inscris-toi", desc: "Crée ton compte en 30 secondes. Pas de carte bancaire requise. Tu accèdes immédiatement à toutes les fonctionnalités." },
@@ -446,25 +452,22 @@ function HowSection() {
         <div className="hidden sm:block absolute top-10 left-[calc(16.7%+28px)] right-[calc(16.7%+28px)] h-px bg-gradient-to-r from-violet-200 via-violet-400 to-violet-200" />
 
         <div className="grid sm:grid-cols-3 gap-10 sm:gap-6">
-          {steps.map((s, i) => {
-            const a = useFadeIn(i * 130);
-            return (
-              <div key={i} {...a} className="flex flex-col items-center text-center gap-5">
-                <div className="relative">
-                  <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center text-3xl shadow-xl shadow-violet-500/25 relative z-10">
-                    {s.icon}
-                  </div>
-                  <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-xl bg-white border-2 border-violet-200 flex items-center justify-center text-xs font-black text-violet-600 shadow-sm">
-                    {i + 1}
-                  </div>
+          {steps.map((s, i) => (
+            <div key={i} {...stepAnims[i]} className="flex flex-col items-center text-center gap-5">
+              <div className="relative">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center text-3xl shadow-xl shadow-violet-500/25 relative z-10">
+                  {s.icon}
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed max-w-[220px] mx-auto">{s.desc}</p>
+                <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-xl bg-white border-2 border-violet-200 flex items-center justify-center text-xs font-black text-violet-600 shadow-sm">
+                  {i + 1}
                 </div>
               </div>
-            );
-          })}
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{s.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed max-w-[220px] mx-auto">{s.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -474,6 +477,10 @@ function HowSection() {
 /* ── SECTION: Témoignages ───────────────────────────────────────────────── */
 function TestimonialsSection() {
   const head = useFadeIn(0);
+  const ta0 = useFadeIn(0);
+  const ta1 = useFadeIn(110);
+  const ta2 = useFadeIn(220);
+  const testimAnims = [ta0, ta1, ta2];
 
   const testimonials = [
     {
@@ -508,26 +515,23 @@ function TestimonialsSection() {
         </h2>
       </div>
       <div className="grid sm:grid-cols-3 gap-6">
-        {testimonials.map((t, i) => {
-          const a = useFadeIn(i * 110);
-          return (
-            <div key={i} {...a} className="card-up bg-white rounded-3xl border border-slate-100 p-7 flex flex-col gap-5">
-              <Stars />
-              <p className="text-sm text-slate-700 leading-relaxed flex-1">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black text-sm shrink-0" style={{ backgroundColor: t.color }}>
-                  {t.avatar}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-900">{t.name}</p>
-                  <p className="text-xs text-slate-400">{t.role}</p>
-                </div>
+        {testimonials.map((t, i) => (
+          <div key={i} {...testimAnims[i]} className="card-up bg-white rounded-3xl border border-slate-100 p-7 flex flex-col gap-5">
+            <Stars />
+            <p className="text-sm text-slate-700 leading-relaxed flex-1">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+            <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black text-sm shrink-0" style={{ backgroundColor: t.color }}>
+                {t.avatar}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-slate-900">{t.name}</p>
+                <p className="text-xs text-slate-400">{t.role}</p>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -536,6 +540,10 @@ function TestimonialsSection() {
 /* ── SECTION: Tarification ──────────────────────────────────────────────── */
 function PricingSection() {
   const head = useFadeIn(0);
+  const pa0 = useFadeIn(0);
+  const pa1 = useFadeIn(100);
+  const pa2 = useFadeIn(200);
+  const pricingAnims = [pa0, pa1, pa2];
 
   const plans = [
     {
@@ -582,7 +590,7 @@ function PricingSection() {
 
       <div className="grid sm:grid-cols-3 gap-6 items-center">
         {plans.map((p, i) => {
-          const a = useFadeIn(i * 100);
+          const a = pricingAnims[i];
           if (p.pro) {
             return (
               <div key={i} {...a} className="pro-card rounded-3xl p-8 relative shadow-2xl shadow-violet-500/30 sm:-my-4 z-10">
