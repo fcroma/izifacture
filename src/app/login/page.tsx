@@ -193,13 +193,15 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-6 sm:p-10 bg-slate-50">
         <div className="w-full max-w-[400px] space-y-8">
 
-          {/* Mobile logo */}
-          <div className="flex items-center gap-2.5 lg:hidden">
+          {/* Logo — links back to landing page */}
+          <Link href="/" className="flex items-center gap-2.5 w-fit">
             <div className="w-9 h-9 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-sm">
               <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-xl font-bold text-slate-900 tracking-tight">Izifacture</span>
-          </div>
+            <span className="text-xl font-bold text-slate-900 tracking-tight">
+              izi<span className="text-primary-600">Facture</span>
+            </span>
+          </Link>
 
           <div>
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
