@@ -30,8 +30,19 @@ export async function middleware(request: NextRequest) {
     || pathname === "/forgot-password" || pathname === "/reset-password";
   const isPublicAsset = pathname.startsWith("/_next") || pathname.startsWith("/favicon");
   const isSupportPage = pathname.startsWith("/support");
+  const isLandingPage = pathname === "/";
 
   if (isPublicAsset) return supabaseResponse;
+
+  // Landing page: guests see it, logged-in users go to dashboard
+  if (isLandingPage) {
+    if (user) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard";
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
+  }
 
   if (!user && !isAuthPage && !isSupportPage) {
     const url = request.nextUrl.clone();
